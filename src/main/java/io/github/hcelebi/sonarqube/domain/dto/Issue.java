@@ -2,6 +2,8 @@ package io.github.hcelebi.sonarqube.domain.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import io.github.hcelebi.sonarqube.serializer.CustomDateTimeDeserializer;
 import lombok.Data;
 import org.joda.time.DateTime;
 
@@ -18,7 +20,9 @@ public class Issue implements Serializable {
     private String project;
     private String resolution;
     private String status;
+    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     private DateTime creationDate;
+    @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     private DateTime closeDate;
     private String type;
 }
