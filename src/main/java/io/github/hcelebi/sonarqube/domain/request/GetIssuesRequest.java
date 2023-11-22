@@ -9,4 +9,5 @@ public class GetIssuesRequest {
     private Integer p;
     private Integer ps;
     private List<String> projects;
+    private Boolean resolved;
 }

@@ -29,6 +29,13 @@ public class SonarqubeRestClient {
             if (getIssuesRequest.getProjects() != null) {
                 query += "&projects=" + getIssuesRequest.getProjects().stream().collect(Collectors.joining(","));
             }
+            if (getIssuesRequest.getResolved() != null) {
+                if (getIssuesRequest.getResolved()) {
+                    query += "&resolved=true";
+                } else {
+                    query += "&resolved=false";
+                }
+            }
             URI uri = URI.create(baseUri + "/issues/search" + query);
             HttpResponse<String> response = getHttpResponse(uri);
             ObjectMapper objectMapper = new ObjectMapper();
