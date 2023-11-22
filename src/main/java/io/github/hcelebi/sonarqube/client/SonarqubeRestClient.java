@@ -36,6 +36,12 @@ public class SonarqubeRestClient {
                     query += "&resolved=false";
                 }
             }
+            if (getIssuesRequest.getCreatedAfter() != null) {
+                query += "&createdAfter=" + getIssuesRequest.getCreatedAfter();
+            }
+            if (getIssuesRequest.getCreatedBefore() != null) {
+                query += "&createdBefore=" + getIssuesRequest.getCreatedBefore();
+            }
             URI uri = URI.create(baseUri + "/issues/search" + query);
             HttpResponse<String> response = getHttpResponse(uri);
             ObjectMapper objectMapper = new ObjectMapper();
