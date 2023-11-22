@@ -2,6 +2,7 @@ package io.github.hcelebi.sonarqube.domain.request;
 
 import lombok.Data;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 import java.util.List;
 
@@ -11,6 +12,6 @@ public class GetIssuesRequest {
     private Integer ps;
     private List<String> projects;
     private Boolean resolved;
-    private DateTime createdAfter;
-    private DateTime createdBefore;
+    private LocalDate createdAfter;
+    private LocalDate createdBefore;
 }
